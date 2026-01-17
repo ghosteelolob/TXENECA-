@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TXENECA</title>
 <style>
-/* Variáveis e reset */
-* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+/* Reset e variáveis */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
 :root{
   --red:#e63946;
   --black:#1d1d1d;
@@ -17,25 +17,18 @@
 }
 
 /* BODY */
-body{background-color: var(--white); color: var(--black); line-height:1.5; scroll-behavior: smooth; position: relative;}
+body{background-color:var(--white); color:var(--black); line-height:1.5; scroll-behavior:smooth; position:relative;}
 
-/* MENSAGEM ROLANTE FIXA */
-.live-msg-top{
-  position:fixed; top:0; width:100%; background-color:var(--yellow);
-  color:#856404; font-weight:bold; padding:10px 0; overflow:hidden; z-index:2000;
-  box-shadow:0 4px 6px rgba(0,0,0,0.2);
-}
-.live-msg-top span{
-  position:absolute; white-space:nowrap; animation:scrollMsg 15s linear infinite;
-}
-@keyframes scrollMsg{
-  0%{left:100%;}
-  100%{left:-100%;}
+/* NOTIFICAÇÕES FLUTUANTES */
+.floating-msg{
+  position:fixed; bottom:20px; right:20px; background-color:var(--yellow);
+  padding:15px 20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  font-weight:bold; color:#856404; z-index:2000; opacity:0; transition:1s;
 }
 
 /* HEADER */
 header{
-  position:sticky; top:40px; background-color: var(--black); color: var(--white);
+  position:sticky; top:0; background-color:var(--black); color:var(--white);
   padding:15px 30px; display:flex; justify-content:space-between; align-items:center; z-index:1000;
   box-shadow:0 4px 6px rgba(0,0,0,0.3);
 }
@@ -43,17 +36,14 @@ header h1{font-size:28px; font-weight:bold;}
 nav ul{display:flex; gap:20px; list-style:none;}
 nav ul li a{color:var(--white); text-decoration:none; font-weight:bold; transition:0.3s;}
 nav ul li a:hover{color:var(--red);}
-.hamburger{display:none; flex-direction:column; gap:5px; cursor:pointer;}
-.hamburger div{width:25px; height:3px; background:white;}
 
 /* CONTAINER */
-.container{max-width:1000px; margin:80px auto 20px auto; padding:0 20px;}
+.container{max-width:1000px; margin:20px auto; padding:0 20px;}
 
 /* FORMULÁRIO DE CADASTRO */
 .cadastro{
   background-color: var(--gray); padding:30px; border-radius:12px;
-  box-shadow:0 6px 15px rgba(0,0,0,0.1); margin-bottom:40px;
-  text-align:center;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1); margin-bottom:40px; text-align:center;
 }
 .cadastro h2{margin-bottom:20px; font-size:24px; color:var(--black);}
 .cadastro input{
@@ -65,7 +55,7 @@ nav ul li a:hover{color:var(--red);}
 }
 .cadastro button:hover{background-color:#d62828;}
 
-/* FEATURES */
+/* QUADRADOS INTERATIVOS */
 .features{
   display:flex; justify-content:space-around; gap:20px; flex-wrap:wrap; margin-bottom:40px;
 }
@@ -73,10 +63,10 @@ nav ul li a:hover{color:var(--red);}
   flex:1 1 120px; background-color:var(--red); color:white; padding:25px;
   text-align:center; font-weight:bold; font-size:18px; border-radius:12px;
   box-shadow:0 6px 15px rgba(0,0,0,0.1); transition:transform 0.3s, opacity 0.5s;
-  opacity:0; transform: translateY(30px);
+  opacity:0; transform: translateY(30px); cursor:pointer;
 }
 .feature.visible{opacity:1; transform:translateY(0);}
-.feature:hover{transform:scale(1.05); cursor:pointer;}
+.feature:hover{transform:scale(1.05);}
 
 /* SOBRE TXENECA */
 .about{
@@ -122,11 +112,6 @@ footer{text-align:center; padding:20px; font-size:16px; color:#555; border-top:1
 </style>
 </head>
 <body>
-
-<!-- MENSAGEM ROLANTE FIXA -->
-<div class="live-msg-top">
-  <span>Maria recebeu 5.000 MZN • João recebeu 10.000 MZN • Ana recebeu 20.000 MZN</span>
-</div>
 
 <header>
   <h1>TXENECA</h1>
@@ -191,6 +176,9 @@ footer{text-align:center; padding:20px; font-size:16px; color:#555; border-top:1
   <footer>Créditos: B.ghost.</footer>
 </div>
 
+<!-- NOTIFICAÇÕES FLOTANTES -->
+<div id="notifications"></div>
+
 <script>
 // Slider dinâmico
 const slider = document.getElementById('limitSlider');
@@ -230,7 +218,26 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.5});
 features.forEach(f=>observer.observe(f));
 
+// Notificações flutuantes
+const messages = [
+  "Maria recebeu 5.000 MZN",
+  "João recebeu 10.000 MZN",
+  "Ana recebeu 20.000 MZN",
+  "Pedro recebeu 15.000 MZN"
+];
+function showNotification(){
+  const notif = document.createElement('div');
+  notif.className = 'floating-msg';
+  notif.textContent = messages[Math.floor(Math.random()*messages.length)];
+  document.body.appendChild(notif);
+  notif.style.opacity='1';
+  setTimeout(()=>{
+    notif.style.opacity='0';
+    setTimeout(()=>notif.remove(),1000);
+  },3000);
+}
+setInterval(showNotification,4000);
 </script>
 
 </body>
-  </html>
+        </html>
