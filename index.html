@@ -5,126 +5,207 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TXENECA</title>
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-    :root{
-        --red:#e63946;
-        --black:#1d1d1d;
-        --white:#ffffff;
-        --gray:#f4f4f4;
-    }
-    body { background-color: var(--white); color: var(--black); line-height:1.5; }
+/* Variáveis e reset */
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+:root{
+  --red:#e63946;
+  --black:#1d1d1d;
+  --white:#ffffff;
+  --gray:#f4f4f4;
+  --green:#25D366;
+}
 
-    /* HEADER */
-    header{
-        display:flex; justify-content:space-between; align-items:center;
-        padding:15px 30px; background-color: var(--black); color: var(--white);
-        position: sticky; top:0; z-index:1000;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    }
-    header h1{ font-size:28px; font-weight:bold;}
-    .hamburger{ display:flex; flex-direction:column; cursor:pointer; gap:5px;}
-    .hamburger div{ width:25px; height:3px; background-color: var(--white); transition: all 0.3s;}
+/* BODY */
+body{background-color: var(--white); color: var(--black); line-height:1.5; scroll-behavior: smooth;}
 
-    /* CONTEÚDO PRINCIPAL */
-    .container{ max-width:1000px; margin:20px auto; padding:0 20px;}
+/* HEADER */
+header{
+  position: sticky; top:0; background-color: var(--black); color: var(--white);
+  padding:15px 30px; display:flex; justify-content:space-between; align-items:center; z-index:1000;
+  box-shadow:0 4px 6px rgba(0,0,0,0.3);
+}
+header h1{font-size:28px; font-weight:bold;}
+nav ul{display:flex; gap:20px; list-style:none;}
+nav ul li a{color:var(--white); text-decoration:none; font-weight:bold; transition:0.3s;}
+nav ul li a:hover{color:var(--red);}
+.hamburger{display:none; flex-direction:column; gap:5px; cursor:pointer;}
+.hamburger div{width:25px; height:3px; background:white;}
 
-    /* FORMULÁRIO DE CADASTRO */
-    .cadastro{
-        background-color: var(--gray); padding:30px; border-radius:12px;
-        box-shadow:0 6px 15px rgba(0,0,0,0.1); margin-bottom:40px;
-    }
-    .cadastro h2{ margin-bottom:20px; font-size:24px; text-align:center; color:var(--black);}
-    .cadastro input{
-        width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc; font-size:16px;
-    }
-    .cadastro button{
-        width:100%; padding:15px; border:none; border-radius:8px; background-color:var(--red);
-        color:var(--white); font-size:18px; cursor:pointer; transition:0.3s;
-    }
-    .cadastro button:hover{ background-color:#d62828; }
+/* CONTAINER */
+.container{max-width:1000px; margin:20px auto; padding:0 20px;}
 
-    /* QUADRADOS DE DESTAQUE */
-    .features{
-        display:flex; justify-content:space-around; gap:20px; flex-wrap:wrap; margin-bottom:40px;
-    }
-    .feature{
-        flex:1 1 200px; background-color:var(--red); color:var(--white); padding:40px;
-        text-align:center; font-weight:bold; font-size:18px; border-radius:12px;
-        box-shadow:0 6px 15px rgba(0,0,0,0.1); transition: transform 0.3s;
-    }
-    .feature:hover{ transform: translateY(-5px); }
+/* FORMULÁRIO DE CADASTRO */
+.cadastro{
+  background-color: var(--gray); padding:30px; border-radius:12px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1); margin-bottom:40px;
+  text-align:center;
+}
+.cadastro h2{margin-bottom:20px; font-size:24px; color:var(--black);}
+.cadastro input{
+  width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc; font-size:16px;
+}
+.cadastro button{
+  width:100%; padding:15px; border:none; border-radius:8px; background-color:var(--red);
+  color:var(--white); font-size:18px; cursor:pointer; transition:0.3s;
+}
+.cadastro button:hover{background-color:#d62828;}
 
-    /* SLIDER DE SIMULAÇÃO */
-    .slider-section{
-        background-color: var(--gray); padding:30px; border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.1);
-        margin-bottom:40px; text-align:center;
-    }
-    .slider-section h3{ margin-bottom:20px; font-size:22px; }
-    input[type=range]{ width:90%; margin:20px 0; }
-    .slider-labels{ display:flex; justify-content:space-between; width:90%; margin:auto; font-weight:bold; font-size:16px;}
-    .slider-value{ margin-top:15px; font-size:22px; font-weight:bold; color:var(--red); }
+/* FEATURES */
+.features{
+  display:flex; justify-content:space-around; gap:20px; flex-wrap:wrap; margin-bottom:40px;
+}
+.feature{
+  flex:1 1 150px; background-color:var(--red); color:white; padding:30px;
+  text-align:center; font-weight:bold; font-size:18px; border-radius:12px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1); transition:transform 0.3s, opacity 0.5s;
+  opacity:0; transform: translateY(30px);
+}
+.feature.visible{opacity:1; transform:translateY(0);}
+.feature:hover{transform:scale(1.05);}
 
-    /* BOTÃO WHATSAPP */
-    .whatsapp-btn{
-        display:none; /* inicialmente escondido */
-        width:100%; padding:20px; background-color:#25D366; color:white; text-align:center;
-        border-radius:12px; font-size:20px; text-decoration:none; font-weight:bold;
-        box-shadow:0 6px 15px rgba(0,0,0,0.1); margin-bottom:40px; transition:0.3s;
-    }
-    .whatsapp-btn:hover{ background-color:#1ebe57; transform:translateY(-3px); }
+/* SOBRE TXENECA */
+.about{
+  background-color:#f0f0f0; padding:40px; border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  margin-bottom:40px; text-align:center;
+}
+.about h3{margin-bottom:15px; font-size:22px;}
+.about p{font-size:16px; line-height:1.6; color:#333;}
 
-    /* RODAPÉ */
-    footer{
-        text-align:center; padding:20px; font-size:16px; color:#555;
-        border-top:1px solid #ccc; margin-top:40px;
-    }
+/* MENSAGEM ROLANTE */
+.live-msg{
+  background-color:#fff3cd; padding:15px 20px; border-radius:8px; margin-bottom:40px;
+  overflow:hidden; position:relative; font-weight:bold; color:#856404;
+}
+.live-msg span{
+  position:absolute; white-space:nowrap; animation:scrollMsg 10s linear infinite;
+}
+@keyframes scrollMsg{
+  0%{left:100%;}
+  100%{left:-100%;}
+}
 
-    /* RESPONSIVO */
-    @media(max-width:900px){
-        .features{ flex-direction:column; align-items:center;}
-    }
+/* SLIDER */
+.slider-section{
+  background-color: var(--gray); padding:30px; border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  margin-bottom:40px; text-align:center;
+}
+.slider-section h3{margin-bottom:20px; font-size:22px;}
+input[type=range]{width:90%; margin:20px 0;}
+.slider-labels{display:flex; justify-content:space-between; width:90%; margin:auto; font-weight:bold; font-size:16px;}
+.slider-value{margin-top:15px; font-size:22px; font-weight:bold; color:var(--red);}
+
+/* WHATSAPP */
+.whatsapp-btn{
+  display:none; width:100%; padding:20px; background-color:var(--green); color:white;
+  text-align:center; border-radius:12px; font-size:20px; font-weight:bold; box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  margin-bottom:40px; transition:0.3s;
+}
+.whatsapp-btn:hover{background-color:#1ebe57; transform:translateY(-3px);}
+
+/* RODAPÉ */
+footer{text-align:center; padding:20px; font-size:16px; color:#555; border-top:1px solid #ccc; margin-top:40px;}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+  nav ul{flex-direction:column; gap:10px;}
+  .features{flex-direction:column; align-items:center;}
+}
 </style>
 </head>
 <body>
 
 <header>
-    <h1>TXENECA</h1>
-    <div class="hamburger" onclick="alert('Menu clicado!')">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+  <h1>TXENECA</h1>
+  <nav>
+    <ul>
+      <li><a href="#cadastro">Fazer agora</a></li>
+      <li><a href="#cadastro">Cadastrar</a></li>
+      <li><a href="#slider">TXENECAR</a></li>
+    </ul>
+  </nav>
 </header>
 
 <div class="container">
-    <!-- FORMULÁRIO DE CADASTRO -->
-    <div class="cadastro">
-        <h2>Cadastro</h2>
-        <form id="cadastroForm">
-            <input type="text" placeholder="Nome" required>
-            <input type="email" placeholder="Email" required>
-            <input type="tel" placeholder="Telefone" required>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
 
-    <!-- QUADRADOS DE DESTAQUE -->
-    <div class="features">
-        <div class="feature">RAPIDEZ</div>
-        <div class="feature">ACESSIBILIDADE</div>
-        <div class="feature">TAXA ANABÓLICA</div>
-    </div>
+  <!-- FORMULÁRIO DE CADASTRO -->
+  <div class="cadastro" id="cadastro">
+    <h2>Cadastro</h2>
+    <form id="cadastroForm">
+      <input type="text" placeholder="Nome" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Telefone" required>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
 
-    <!-- SLIDER DE SIMULAÇÃO -->
-    <div class="slider-section">
-        <h3>Simulação de Valor</h3>
-        <input type="range" min="5000" max="50000" value="5000" id="limitSlider">
-        <div class="slider-labels">
-            <span>5.000 MZN</span>
-            <span>50.000 MZN</span>
-        </div>
-        <div class="slider-value" id="sliderValue">5.000 MZN</div>
-    </div>
+  <!-- QUADRADOS DE DESTAQUE -->
+  <div class="features">
+    <div class="feature">RAPIDEZ</div>
+    <div class="feature">ACESSIBILIDADE</div>
+    <div class="feature">TAXA ANABÓLICA</div>
+  </div>
 
-    <!-- BOTÃO WHATSAPP -->
-    <a
+  <!-- SOBRE TXENECA -->
+  <div class="about">
+    <h3>Sobre TXENECA</h3>
+    <p>TXENECA é a sua solução de crédito rápido e confiável em Moçambique. Oferecemos limites flexíveis, taxas competitivas e total acessibilidade para que você consiga realizar seus projetos sem burocracia. Seja você estudante, empreendedor ou profissional, a TXENECA tem a solução certa para suas necessidades financeiras.</p>
+  </div>
+
+  <!-- MENSAGEM ROLANTE -->
+  <div class="live-msg">
+    <span>Maria acaba de receber 5.000 MZN • João acabou de receber 20.000 MZN • Ana recebeu 10.000 MZN</span>
+  </div>
+
+  <!-- SLIDER DE SIMULAÇÃO -->
+  <div class="slider-section" id="slider">
+    <h3>Simulação de Valor</h3>
+    <input type="range" min="5000" max="50000" value="5000" id="limitSlider">
+    <div class="slider-labels">
+      <span>5.000 MZN</span>
+      <span>50.000 MZN</span>
+    </div>
+    <div class="slider-value" id="sliderValue">5.000 MZN</div>
+  </div>
+
+  <!-- BOTÃO WHATSAPP -->
+  <a href="https://wa.me/258850515522" target="_blank" class="whatsapp-btn" id="whatsappBtn">
+    Abrir WhatsApp
+  </a>
+
+  <!-- RODAPÉ -->
+  <footer>Créditos: B.ghost.</footer>
+</div>
+
+<script>
+// Slider dinâmico
+const slider = document.getElementById('limitSlider');
+const sliderValue = document.getElementById('sliderValue');
+slider.addEventListener('input', ()=>{
+  sliderValue.textContent = `${parseInt(slider.value).toLocaleString()} MZN`;
+});
+
+// WhatsApp aparece após cadastro
+const cadastroForm = document.getElementById('cadastroForm');
+const whatsappBtn = document.getElementById('whatsappBtn');
+cadastroForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  alert('Cadastro realizado com sucesso! Agora podes usar o WhatsApp.');
+  whatsappBtn.style.display = 'block';
+  cadastroForm.reset();
+  whatsappBtn.scrollIntoView({behavior:'smooth'});
+});
+
+// Animação de entrada dos quadrados
+const features = document.querySelectorAll('.feature');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.5});
+features.forEach(f=>observer.observe(f));
+</script>
+
+</body>
+     </html>
