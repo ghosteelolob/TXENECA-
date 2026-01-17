@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TXENECA | Soluções Financeiras</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f2f2f2;
+  color:#333;
+}
+
+/* NOME FLUTUANTE */
+#flutuante{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#b00000;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:30px;
+  font-size:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,.3);
+  z-index:999;
+}
+
+/* HEADER */
+header{
+  background:#b00000;
+  color:#fff;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+  font-size:20px;
+}
+
+.menu{
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* MENU */
+nav{
+  display:none;
+  position:absolute;
+  top:60px;
+  right:15px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+nav a{
+  display:block;
+  padding:12px 20px;
+  text-decoration:none;
+  color:#b00000;
+  font-weight:600;
+}
+
+/* CONTAINER */
+.container{
+  padding:20px;
+}
+
+/* INPUTS */
+input, select{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:15px;
+}
+
+/* BENEFÍCIOS */
+.beneficios{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  border-left:4px solid #b00000;
+}
+
+/* SIMULAÇÃO */
+.simulacao{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  margin-bottom:20px;
+}
+
+.simulacao h2{
+  color:#b00000;
+}
+
+input[type=range]{
+  width:100%;
+}
+
+/* TABELA */
+.tabela{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid #ddd;
+  text-align:center;
+}
+
+th{
+  background:#b00000;
+  color:#fff;
+}
+
+/* SEÇÕES */
+section{
+  margin-bottom:30px;
+}
+
+h2{
+  color:#b00000;
+}
+
+/* RODAPÉ */
+footer{
+  background:#fff;
+  padding:20px;
+  font-size:14px;
+  color:#555;
+  margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="flutuante">José recebeu 20.000 MZN</div>
+
+<header>
+  <h1>TXENECA</h1>
+  <div class="menu" onclick="abrirMenu()">☰</div>
+</header>
+
+<nav id="menu">
+  <a href="#">Iniciar novo cadastro</a>
+  <a href="#">Pagamento</a>
+</nav>
+
+<div class="container">
+
+<section>
+<h2>Cadastro</h2>
+<input type="text" placeholder="Nome completo">
+<input type="email" placeholder="E-mail">
+<input type="tel" placeholder="Telefone">
+<input type="password" placeholder="Palavra-passe">
+</section>
+
+<div class="beneficios">
+  <div class="card">✔️ Flexibilidade</div>
+  <div class="card">⚡ Rapidez</div>
+  <div class="card">🔒 Segurança</div>
+  <div class="card">📊 Taxas Ajustáveis</div>
+</div>
+
+<div class="simulacao">
+  <h2>Simulação de Empréstimo</h2>
+  <p>Arraste o seletor para escolher o valor que pretende solicitar.</p>
+  <input type="range" min="5000" max="200000" step="1000" value="5000" id="range" oninput="atualizar()">
+  <p><strong>Valor selecionado:</strong> <span id="valor">5.000</span> MZN</p>
+</div>
+
+<div class="tabela">
+<h2>Tabela de Taxa de Inscrição & Valor do Empréstimo</h2>
+<table>
+<tr><th>Taxa (MT)</th><th>Valor do Empréstimo (MT)</th></tr>
+<tr><td>399</td><td>5.000 – 8.000</td></tr>
+<tr><td>499</td><td>12.000 – 15.000</td></tr>
+<tr><td>599</td><td>20.000 – 28.000</td></tr>
+<tr><td>699</td><td>37.000 – 45.000</td></tr>
+<tr><td>799</td><td>50.000 – 67.000</td></tr>
+<tr><td>1.099</td><td>77.000 – 85.000</td></tr>
+<tr><td>1.299</td><td>100.000 – 135.000</td></tr>
+<tr><td>1.499</td><td>136.000 – 167.000</td></tr>
+<tr><td>1.899</td><td>168.000 – 189.000</td></tr>
+<tr><td>1.999</td><td>190.000 – 200.000</td></tr>
+</table>
+</div>
+
+<section>
+<h2>Pagamento da Taxa de Inscrição</h2>
+<p>
+Para dar início ao processo do seu empréstimo, é necessário efetuar o pagamento
+da taxa de inscrição através de um dos métodos disponíveis abaixo. Após a confirmação,
+o seu pedido será analisado e processado com rapidez, transparência e segurança.
+</p>
+
+<select>
+  <option>Selecione o método de pagamento</option>
+  <option>M-Pesa</option>
+  <option>e-Mola</option>
+  <option>M-Cash</option>
+</select>
+
+<input type="text" placeholder="Número para pagamento: 850515522">
+<p><strong>Beneficiário:</strong> Eunice R*****S</p>
+</section>
+
+<section>
+<h2>Por que confiar na TXENECA?</h2>
+<p>
+A TXENECA é uma plataforma focada em soluções financeiras acessíveis,
+com processos claros, comunicação transparente e compromisso com o cliente.
+Trabalhamos para garantir que cada solicitação seja tratada com seriedade,
+respeito e confidencialidade.
+</p>
+
+<p>
+A nossa missão é facilitar o acesso ao crédito de forma responsável,
+ajudando famílias e empreendedores a alcançarem os seus objetivos financeiros
+sem burocracias excessivas.
+</p>
+
+<p>
+A confiança dos nossos clientes é construída através de um atendimento dedicado,
+processos bem definidos e acompanhamento contínuo desde o cadastro até a liberação
+do valor solicitado.
+</p>
+</section>
+
+<section>
+<h2>Segundo Cadastro com Pagamento</h2>
+<p>
+Caso já tenha escolhido o valor e o método de pagamento, pode efetuar um novo cadastro
+diretamente nesta seção para agilizar o processo.
+</p>
+
+<input type="text" placeholder="Nome completo">
+<input type="tel" placeholder="Telefone">
+<select>
+  <option>M-Pesa</option>
+  <option>e-Mola</option>
+  <option>M-Cash</option>
+</select>
+<input type="text" placeholder="Número de pagamento: 850515522">
+</section>
+
+</div>
+
+<footer>
+<p><strong>TXENECA</strong> — Soluções Financeiras Responsáveis</p>
+<p>Compromisso, transparência e confiança em cada etapa do processo.</p>
+</footer>
+
+<script>
+function abrirMenu(){
+  let m=document.getElementById("menu");
+  m.style.display = m.style.display==="block" ? "none" : "block";
+}
+
+function atualizar(){
+  let v=document.getElementById("range").value;
+  document.getElementById("valor").innerText =
+    Number(v).toLocaleString("pt-MZ");
+}
+
+let nomes=[
+ "José recebeu 20.000 MZN",
+ "Ana recebeu 15.000 MZN",
+ "Maria recebeu 50.000 MZN"
+];
+let i=0;
+setInterval(()=>{
+  document.getElementById("flutuante").innerText=nomes[i];
+  i=(i+1)%nomes.length;
+},5000);
+</script>
+
+</body>
+  </html>
