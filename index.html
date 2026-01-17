@@ -6,223 +6,48 @@
 <title>TXENECA</title>
 
 <style>
-*{box-sizing:border-box}
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#0b0b0b;
-    color:#fff;
-}
-header{
-    background:#000;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #222;
-}
-header h1{
-    margin:0;
-    color:#ff2a2a;
-}
-nav a{
-    color:#bbb;
-    margin-left:15px;
-    text-decoration:none;
-    font-size:14px;
-}
-.container{
-    padding:20px;
-    padding-bottom:120px;
-}
-.card{
-    background:#111;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 15px 30px rgba(0,0,0,.6);
-    animation:subir .6s ease;
-}
-@keyframes subir{
-    from{opacity:0; transform:translateY(30px)}
-    to{opacity:1; transform:translateY(0)}
-}
-.card h3{
-    margin-top:0;
-    color:#ff2a2a;
-}
-.valor{
-    font-size:34px;
-    font-weight:bold;
-    margin:10px 0;
-}
-.progress{
-    background:#222;
-    height:8px;
-    border-radius:10px;
-    overflow:hidden;
-    margin-bottom:15px;
-}
-.progress span{
-    display:block;
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#ff2a2a,#b30000);
-    transition:.3s;
-}
-input[type=range]{
-    width:100%;
-    appearance:none;
-    height:6px;
-    background:#333;
-    border-radius:5px;
-    outline:none;
-}
-input[type=range]::-webkit-slider-thumb{
-    appearance:none;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    background:#ff2a2a;
-}
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:12px;
-    border-radius:8px;
-    border:1px solid #333;
-    background:#000;
-    color:#fff;
-}
-button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    font-size:16px;
-    font-weight:bold;
-    color:white;
-    background:linear-gradient(135deg,#ff2a2a,#b30000);
-    cursor:pointer;
-}
-button:active{
-    transform:scale(.97);
-}
-.loading{
-    opacity:.6;
-    pointer-events:none;
-}
-.textao{
-    background:#0f0f0f;
-    border-radius:16px;
-    padding:20px;
-    line-height:1.6;
-    font-size:14px;
-    border:1px solid #222;
-}
-.footer{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#000;
-    border-top:1px solid #222;
-    padding:12px;
-    text-align:center;
-    font-size:12px;
-    color:#777;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <h1>TXENECA</h1>
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Limite</a>
-        <a href="#">Cadastro</a>
-    </nav>
-</header>
-
-<div class="container">
-
-    <!-- SIMULADOR -->
-    <div class="card">
-        <h3>Limite pré-aprovado</h3>
-        <div class="valor" id="valor">10.000 MT</div>
-
-        <div class="progress"><span id="barra"></span></div>
-
-        <input type="range" min="10000" max="200000" step="5000" value="10000"
-        oninput="mudar(this.value)">
-        <small>Análise automática • Resposta imediata</small>
-    </div>
-
-    <!-- CADASTRO -->
-    <div class="card">
-        <h3>Cadastro rápido</h3>
-        <input type="text" placeholder="Nome completo">
-        <input type="tel" placeholder="Telefone">
-        <input type="email" placeholder="Email">
-        <button onclick="processar(this)">Solicitar agora</button>
-    </div>
-
-    <!-- TEXTÃO -->
-    <div class="card textao">
-📊 TABELA DE TAXA DE INSCRIÇÃO & VALOR DO EMPRÉSTIMO<br>
-💬 ESCOLHE A OPÇÃO IDEAL PARA TI E FAZ JÁ O PAGAMENTO DA TAXA DE INSCRIÇÃO!<br><br>
-
-1️⃣ PAGA TAXA 399MT 👉 RECEBE ENTRE 5.000MT MT E 8.000 MT<br><br>
-2️⃣ PAGA TAXA 499 MT 👉 RECEBE ENTRE 12.000 MT E 15.000 MT<br><br>
-3️⃣ PAGA TAXA 599MT 👉 RECEBE ENTRE 20.000 MT E 28.000 MT<br><br>
-4️⃣ PAGA TAXA 699MT 👉 RECEBE ENTRE 37.000 MT E 45.000 MT<br><br>
-5️⃣ PAGA TAXA 799.MT 👉 RECEBE ENTRE 50.000 MT E 67.000 MT<br><br>
-6️⃣ PAGA TAXA 1.099MT 👉 RECEBE ENTRE 77.000 MT E 85.000 MT<br><br>
-7️⃣ PAGA TAXA 1.299MT 👉 RECEBE ENTRE 100.000 MT E 135.000 MT<br><br>
-8️⃣ PAGA TAXA 1.499MT 👉 RECEBE ENTRE 136.000 MT E 167.000 MT<br><br>
-9️⃣ PAGA TAXA 1.899 MT 👉 RECEBE ENTRE 168.000 MT E 189.000 MT<br><br>
-🔟 PAGA TAXA 1.999MT 👉 RECEBE ENTRE 190.000 MT E 200.000 MT<br><br>
-
-<b>M-pesa 850515522 – Eunice R*****S</b><br>
-Faça o pagamento da opção que escolheu<br><br>
-
-📌 LÊ COM ATENÇÃO E ESCOLHE DE 1 A 10 CONFORME O VALOR QUE PRETENDES SOLICITAR.<br>
-✅ APÓS O PAGAMENTO DA TAXA, O EMPRÉSTIMO SERÁ PROCESSADO E LIBERADO COM RAPIDEZ!
-    </div>
-
-</div>
-
-<div class="footer">
-© TXENECA — Sistema financeiro
-</div>
-
-<script>
-let atual = 10000;
-function mudar(v){
-    let alvo = Number(v);
-    let passo = (alvo - atual)/20;
-    let i=0;
-    let anim = setInterval(()=>{
-        atual += passo;
-        document.getElementById("valor").innerText =
-        Math.round(atual).toLocaleString("pt-MZ")+" MT";
-        i++;
-        if(i>=20){clearInterval(anim); atual=alvo;}
-    },15);
-
-    let percent = (v-10000)/(200000-10000)*100;
-    document.getElementById("barra").style.width = percent+"%";
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 20px;
 }
 
-function processar(btn){
-    btn.classList.add("loading");
-    btn.innerText="Processando...";
-    setTimeout(()=>{
-        btn.innerText="Pedido enviado";
-    },2000);
+/* FORM */
+.container {
+  max-width: 420px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-</script>
 
-</body>
-    </html>
+h2 {
+  text-align: center;
+  color: #c62828;
+}
+
+/* FLOATING LABEL */
+.field {
+  position: relative;
+  margin-top: 20px;
+}
+
+.field input {
+  width: 100%;
+  padding: 14px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.field label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color: #777;
+  font-size: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: 0.3s;
