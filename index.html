@@ -1,242 +1,147 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-MZ">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TXENECA</title>
+<title>TXENECA | Empréstimos</title>
 
 <style>
-*{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#f4f6f8}
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f2f2f2;
+  color:#333;
+}
 
-/* MENU */
+/* TOPO */
 header{
-  background:#b71c1c;
+  background:#b00000;
   color:#fff;
-  padding:15px;
+  padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
+
+header h1{
+  margin:0;
+  font-size:20px;
+}
+
 .menu{
   font-size:26px;
   cursor:pointer;
 }
-.nav{
+
+/* MENU */
+nav{
   display:none;
   background:#fff;
   position:absolute;
   top:60px;
   right:15px;
-  box-shadow:0 4px 15px rgba(0,0,0,.2);
   border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
-.nav a{
+
+nav a{
   display:block;
   padding:12px 20px;
-  color:#b71c1c;
   text-decoration:none;
-  font-weight:bold;
+  color:#b00000;
+  font-weight:600;
 }
 
-/* CONTAINER */
+/* CONTEÚDO */
 .container{
-  max-width:450px;
-  margin:auto;
   padding:20px;
 }
 
-/* CAMPOS */
-.field{
-  position:relative;
-  margin-top:20px;
-}
-.field input{
+/* CADASTRO */
+input{
   width:100%;
-  padding:14px;
-  border-radius:10px;
-  border:1px solid #ccc;
-}
-.field label{
-  position:absolute;
-  top:50%;
-  left:15px;
-  transform:translateY(-50%);
-  color:#777;
-  background:#fff;
-  padding:0 6px;
-  transition:.3s;
-}
-.field input:focus+label,
-.field input:not(:placeholder-shown)+label{
-  top:-8px;
-  font-size:12px;
-  color:#b71c1c;
-}
-
-/* LISTA */
-.list{
-  margin-top:20px;
-  background:#fff;
-  padding:15px;
-  border-radius:12px;
-}
-.list div{
-  padding:8px 0;
-  border-bottom:1px solid #eee;
-}
-
-/* QUADRADOS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:20px;
-}
-.card{
-  background:#fdecea;
-  padding:15px<!DOCTYPE html>
-<html lang="pt">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TXENECA</title>
-
-<style>
-*{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#f4f6f8}
-
-/* MENU */
-header{
-  background:#b71c1c;
-  color:#fff;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.menu{
-  font-size:26px;
-  cursor:pointer;
-}
-.nav{
-  display:none;
-  background:#fff;
-  position:absolute;
-  top:60px;
-  right:15px;
-  box-shadow:0 4px 15px rgba(0,0,0,.2);
-  border-radius:10px;
-}
-.nav a{
-  display:block;
-  padding:12px 20px;
-  color:#b71c1c;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-/* CONTAINER */
-.container{
-  max-width:450px;
-  margin:auto;
-  padding:20px;
-}
-
-/* CAMPOS */
-.field{
-  position:relative;
-  margin-top:20px;
-}
-.field input{
-  width:100%;
-  padding:14px;
-  border-radius:10px;
-  border:1px solid #ccc;
-}
-.field label{
-  position:absolute;
-  top:50%;
-  left:15px;
-  transform:translateY(-50%);
-  color:#777;
-  background:#fff;
-  padding:0 6px;
-  transition:.3s;
-}
-.field input:focus+label,
-.field input:not(:placeholder-shown)+label{
-  top:-8px;
-  font-size:12px;
-  color:#b71c1c;
-}
-
-/* LISTA */
-.list{
-  margin-top:20px;
-  background:#fff;
-  padding:15px;
-  border-radius:12px;
-}
-.list div{
-  padding:8px 0;
-  border-bottom:1px solid #eee;
-}
-
-/* QUADRADOS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:20px;
-}
-.card{
-  background:#fdecea;
-  padding:15px;
-  text-align:center;
-  border-radius:12px;
-  font-weight:bold;
-  color:#b71c1c;
-}
-
-/* TEXTO */
-.text{
-  margin-top:25px;
-  background:#fff;
-  padding:20px;
-  border-radius:12px;
-  line-height:1.6;
-  font-size:14px;
-}
-
-/* SLIDER */
-.slider{
-  margin-top:20px;
-}
-.slider input{
-  width:100%;
-}
-
-/* GANHOS */
-.gain{
-  margin-top:15px;
-  background:#e8f5e9;
   padding:12px;
-  border-radius:10px;
-  font-weight:bold;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:15px;
 }
 
-/* BOTÃO */
-.call{
-  display:block;
-  margin-top:25px;
-  text-align:center;
-  background:#b71c1c;
-  color:#fff;
+/* BENEFÍCIOS */
+.beneficios{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.card{
+  background:#fff;
   padding:15px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  border-left:4px solid #b00000;
+}
+
+/* SIMULAÇÃO */
+.simulacao{
+  background:#fff;
+  padding:20px;
   border-radius:12px;
-  text-decoration:none;
-  font-weight:bold;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  margin-bottom:20px;
+}
+
+.simulacao h2{
+  margin-top:0;
+  color:#b00000;
+}
+
+input[type=range]{
+  width:100%;
+}
+
+.valor{
+  margin-top:10px;
+  font-size:16px;
+}
+
+/* TABELA */
+.tabela{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid #ddd;
+  text-align:center;
+}
+
+th{
+  background:#b00000;
+  color:#fff;
+}
+
+.nota{
+  margin-top:12px;
+  font-size:14px;
+  color:#555;
+}
+
+/* RODAPÉ */
+footer{
+  margin-top:30px;
+  padding:15px;
+  text-align:center;
+  font-size:14px;
+  color:#777;
 }
 </style>
 </head>
@@ -244,67 +149,80 @@ header{
 <body>
 
 <header>
-  <strong>TXENECA</strong>
-  <div class="menu" onclick="toggle()">☰</div>
-  <div class="nav" id="nav">
-    <a href="#">Iniciar novo cadastro</a>
-    <a href="#">Pagamento</a>
-    <a href="tel:850515522">Ligar</a>
-  </div>
+  <h1>TXENECA</h1>
+  <div class="menu" onclick="abrirMenu()">☰</div>
 </header>
+
+<nav id="menu">
+  <a href="#">Iniciar novo cadastro</a>
+  <a href="#">Pagamento</a>
+</nav>
 
 <div class="container">
 
-<h3>Cadastro</h3>
-<div class="field">
-  <input type="text" placeholder=" ">
-  <label>Nome completo</label>
+<h2>Cadastro</h2>
+<input type="text" placeholder="Nome completo">
+
+<div class="beneficios">
+  <div class="card">✔️ Flexibilidade</div>
+  <div class="card">⚡ Rapidez</div>
+  <div class="card">🔒 Segurança</div>
+  <div class="card">📊 Taxa Ajustável</div>
 </div>
 
-<div class="list">
-  <div>✔ Empréstimo: 10.000 MT</div>
-  <div>✔ Empréstimo: 25.000 MT</div>
-  <div>✔ Empréstimo: 50.000 MT</div>
-  <div>✔ Taxa ajustável conforme valor</div>
+<div class="simulacao">
+  <h2>Simulação de Empréstimo</h2>
+  <p>Selecione o valor pretendido</p>
+
+  <input type="range" min="5000" max="200000" step="1000" value="5000" id="range" oninput="atualizar()">
+
+  <div class="valor">
+    Valor selecionado: <strong><span id="valor">5.000</span> MZN</strong>
+  </div>
 </div>
 
-<div class="cards">
-  <div class="card">Flexibilidade</div>
-  <div class="card">Rapidez</div>
-  <div class="card">Taxa Anual</div>
-  <div class="card">Segurança</div>
+<div class="tabela">
+<h2>Tabela de Taxa de Inscrição & Valor do Empréstimo</h2>
+
+<table>
+<tr><th>Taxa (MT)</th><th>Valor do Empréstimo (MT)</th></tr>
+<tr><td>399</td><td>5.000 – 8.000</td></tr>
+<tr><td>499</td><td>12.000 – 15.000</td></tr>
+<tr><td>599</td><td>20.000 – 28.000</td></tr>
+<tr><td>699</td><td>37.000 – 45.000</td></tr>
+<tr><td>799</td><td>50.000 – 67.000</td></tr>
+<tr><td>1.099</td><td>77.000 – 85.000</td></tr>
+<tr><td>1.299</td><td>100.000 – 135.000</td></tr>
+<tr><td>1.499</td><td>136.000 – 167.000</td></tr>
+<tr><td>1.899</td><td>168.000 – 189.000</td></tr>
+<tr><td>1.999</td><td>190.000 – 200.000</td></tr>
+</table>
+
+<p class="nota">
+Após o pagamento da taxa de inscrição, o pedido será analisado e o empréstimo processado com rapidez e segurança.
+</p>
+
+<p><strong>Pagamento:</strong> 850515522 — Eunice R*****S</p>
 </div>
 
-<div class="text">
-<strong>Por que confiar no TXENECA?</strong><br><br>
-O TXENECA vem ajudando pessoas há bastante tempo com soluções financeiras acessíveis, claras e responsáveis.
-Nosso foco é garantir transparência, acompanhamento contínuo e crescimento sustentável para cada cliente.
 </div>
 
-<div class="text">
-<strong>Sobre a taxa</strong><br><br>
-A taxa existe para garantir melhor visão e organização do seu empréstimo, permitindo controlo, segurança e continuidade dos serviços prestados.
-</div>
-
-<div class="slider">
-  <label>Simular valor:</label>
-  <input type="range" min="5000" max="150000">
-</div>
-
-<div class="gain">
-José recebeu o valor estimado de <strong>45.000 MT</strong>
-</div>
-
-<a class="call" href="tel:850515522">📞 Atendimento TXENECA</a>
-
-</div>
+<footer>
+© 2026 TXENECA — Soluções Financeiras Responsáveis
+</footer>
 
 <script>
-function toggle(){
-  let n=document.getElementById("nav");
-  n.style.display=n.style.display==="block"?"none":"block";
+function abrirMenu(){
+  let menu=document.getElementById("menu");
+  menu.style.display = menu.style.display==="block" ? "none" : "block";
+}
+
+function atualizar(){
+  let v=document.getElementById("range").value;
+  document.getElementById("valor").innerText=
+  Number(v).toLocaleString("pt-MZ");
 }
 </script>
 
 </body>
-  </html>
+                               </html>
