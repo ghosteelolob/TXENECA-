@@ -40,10 +40,11 @@
     .cadastro button:hover{ background-color:#d62828;}
     
     /* FEATURES */
-    .features{ display:flex; justify-content:space-between; margin:30px 0; gap:20px;}
+    .features{ display:flex; justify-content:space-between; margin:30px 0; gap:20px; flex-wrap:wrap;}
     .feature{
         flex:1; background-color:var(--red); color:var(--white); padding:30px; border-radius:10px;
         text-align:center; font-weight:bold; font-size:18px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        min-width:150px;
     }
 
     /* SLIDER + WHATSAPP */
@@ -51,9 +52,56 @@
         display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;
         gap:20px; padding:30px; background-color:var(--gray); border-radius:10px;
         display:none; /* inicialmente escondido */
+        margin-bottom:40px;
     }
     .slider-section{ flex:1 1 60%; }
     .slider-section h3{ margin-bottom:20px; text-align:center; }
     input[type=range]{ width:100%; margin:20px 0; }
     .slider-labels{ display:flex; justify-content:space-between; font-weight:bold; font-size:16px;}
-    .slider-value{ margin-top:15px; font-size:22px
+    .slider-value{ margin-top:15px; font-size:22px; font-weight:bold; color:var(--red); text-align:center;}
+    .whatsapp-btn{
+        flex:1 1 35%; padding:15px; background-color:#25D366; color:white; text-align:center;
+        border-radius:10px; font-size:18px; text-decoration:none; font-weight:bold;
+    }
+    .whatsapp-btn:hover{ background-color:#1ebe57; }
+
+    /* RESPONSIVO */
+    @media(max-width:900px){
+        .main{ flex-direction:column; align-items:center;}
+        .cadastro, .slider-section{ max-width:100%; margin-bottom:20px;}
+        .features{ flex-direction:column; gap:15px;}
+        .slider-whatsapp{ flex-direction:column; align-items:center;}
+    }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>TXENECA</h1>
+    <div class="hamburger" onclick="alert('Menu clicado!')">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</header>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="main">
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <div class="cadastro">
+        <h2>Cadastro</h2>
+        <form id="cadastroForm">
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="Email" required>
+            <input type="tel" placeholder="Telefone" required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+</div>
+
+<!-- QUADRADOS DE DESTAQUE -->
+<div class="features">
+    <div class="feature">RAP
